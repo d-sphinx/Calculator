@@ -1,0 +1,115 @@
+﻿<Window x:Class="Calculator.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="Calculator" Height="525" Width="350" SizeChanged="Window_SizeChanged">
+
+    <Grid>
+
+        <Grid x:Name="gridLow" Visibility="Visible">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition MinHeight="70"/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Viewbox Grid.ColumnSpan="5" HorizontalAlignment="Right">
+                <Label FontWeight="DemiBold" Content="{Binding Path=Tablo}"/>
+            </Viewbox>
+
+            <Button Content="1" Grid.Row="5" Grid.Column="0" FontWeight="Bold" FontSize="24" Command="{Binding Numeral}" CommandParameter="1"/>
+            <Button Content="2" Grid.Row="5" Grid.Column="1" FontWeight="Bold" FontSize="24" Command="{Binding Numeral}" CommandParameter="2"/>
+            <Button Content="3" Grid.Row="5" Grid.Column="2" FontWeight="Bold" FontSize="24" Command="{Binding Numeral}" CommandParameter="3"/>
+            <Button Content="4" Grid.Row="4" Grid.Column="0" FontWeight="Bold" FontSize="24" Command="{Binding Numeral}" CommandParameter="4"/>
+            <Button Content="5" Grid.Row="4" Grid.Column="1" FontWeight="Bold" FontSize="24" Command="{Binding Numeral}" CommandParameter="5"/>
+            <Button Content="6" Grid.Row="4" Grid.Column="2" FontWeight="Bold" FontSize="24" Command="{Binding Numeral}" CommandParameter="6"/>
+            <Button Content="7" Grid.Row="3" Grid.Column="0" FontWeight="Bold" FontSize="24" Command="{Binding Numeral}" CommandParameter="7"/>
+            <Button Content="8" Grid.Row="3" Grid.Column="1" FontWeight="Bold" FontSize="24" Command="{Binding Numeral}" CommandParameter="8"/>
+            <Button Content="9" Grid.Row="3" Grid.Column="2" FontWeight="Bold" FontSize="24" Command="{Binding Numeral}" CommandParameter="9"/>
+            <Button Content="0" Grid.Row="6" Grid.Column="1" FontWeight="Bold" FontSize="24" Command="{Binding Numeral}" CommandParameter="0"/>
+
+            <Button Content="÷" Grid.Row="2" Grid.Column="3" FontSize="24" Command="{Binding MathOp}" CommandParameter="/"/>
+            <Button Content="×" Grid.Row="3" Grid.Column="3" FontSize="24" Command="{Binding MathOp}" CommandParameter="*"/>
+            <Button Content="-" Grid.Row="4" Grid.Column="3" FontSize="24" Command="{Binding MathOp}" CommandParameter="-"/>
+            <Button Content="+" Grid.Row="5" Grid.Column="3" FontSize="24" Command="{Binding MathOp}" CommandParameter="+"/>
+            <Button Content="=" Grid.Row="6" Grid.Column="3" FontSize="24" Command="{Binding MathOp}" CommandParameter="="/>
+            <Button Content="%" Grid.Row="1" Grid.Column="0" FontSize="24" Command="{Binding MathOp}" CommandParameter="%"/>
+
+            <Button Content="CE" Grid.Row="2" Grid.Column="0" FontSize="24" Command="{Binding Edit}" CommandParameter="ce"/>
+            <Button Content="C" Grid.Row="2" Grid.Column="1" FontSize="24" Command="{Binding Edit}" CommandParameter="c"/>
+            <Button Content="⌫" Grid.Row="2" Grid.Column="2" FontSize="24" Command="{Binding Edit}" CommandParameter="back"/>
+
+            <Button Content="√" Grid.Row="1" Grid.Column="1" FontSize="24" Command="{Binding Special}" CommandParameter="sqrt"/>
+            <Button Content="x²" Grid.Row="1" Grid.Column="2" FontSize="24" Command="{Binding Special}" CommandParameter="power2"/>
+            <Button Content="1/x" Grid.Row="1" Grid.Column="3" FontSize="24" Command="{Binding Special}" CommandParameter="inverse"/>
+            <Button Content="±" Grid.Row="6" Grid.Column="0" FontSize="24" Command="{Binding Special}" CommandParameter="+-"/>
+            <Button Content="," Grid.Row="6" Grid.Column="2" FontSize="24" Command="{Binding Special}" CommandParameter=","/>
+        </Grid>
+                
+        
+        <Grid x:Name="gridHigh" Visibility="Hidden">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition MinHeight="70"/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Viewbox Grid.ColumnSpan="5" HorizontalAlignment="Right">
+                <Label FontWeight="DemiBold" Content="{Binding Path=Tablo}"/>
+            </Viewbox>
+
+            <Button Content="1" Grid.Row="4" Grid.Column="1" FontWeight="Bold" FontSize="24" Background="White" Command="{Binding Numeral}" CommandParameter="1"/>
+            <Button Content="2" Grid.Row="4" Grid.Column="2" FontWeight="Bold" FontSize="24" Background="White" Command="{Binding Numeral}" CommandParameter="2"/>
+            <Button Content="3" Grid.Row="4" Grid.Column="3" FontWeight="Bold" FontSize="24" Background="White" Command="{Binding Numeral}" CommandParameter="3"/>
+            <Button Content="4" Grid.Row="3" Grid.Column="1" FontWeight="Bold" FontSize="24" Background="White" Command="{Binding Numeral}" CommandParameter="4"/>
+            <Button Content="5" Grid.Row="3" Grid.Column="2" FontWeight="Bold" FontSize="24" Background="White" Command="{Binding Numeral}" CommandParameter="5"/>
+            <Button Content="6" Grid.Row="3" Grid.Column="3" FontWeight="Bold" FontSize="24" Background="White" Command="{Binding Numeral}" CommandParameter="6"/>
+            <Button Content="7" Grid.Row="2" Grid.Column="1" FontWeight="Bold" FontSize="24" Background="White" Command="{Binding Numeral}" CommandParameter="7"/>
+            <Button Content="8" Grid.Row="2" Grid.Column="2" FontWeight="Bold" FontSize="24" Background="White" Command="{Binding Numeral}" CommandParameter="8"/>
+            <Button Content="9" Grid.Row="2" Grid.Column="3" FontWeight="Bold" FontSize="24" Background="White" Command="{Binding Numeral}" CommandParameter="9"/>
+            <Button Content="0" Grid.Row="5" Grid.Column="2" FontWeight="Bold" FontSize="24" Background="White" Command="{Binding Numeral}" CommandParameter="0"/>
+
+            <Button Content="÷" Grid.Row="1" Grid.Column="4" FontSize="24" Command="{Binding MathOp}" CommandParameter="/"/>
+            <Button Content="×" Grid.Row="2" Grid.Column="5" FontSize="24" Command="{Binding MathOp}" CommandParameter="*"/>
+            <Button Content="-" Grid.Row="3" Grid.Column="5" FontSize="24" Command="{Binding MathOp}" CommandParameter="-"/>
+            <Button Content="+" Grid.Row="4" Grid.Column="5" FontSize="24" Command="{Binding MathOp}" CommandParameter="+"/>
+            <Button Content="=" Grid.Row="5" Grid.Column="5" FontSize="24" Command="{Binding MathOp}" CommandParameter="="/>
+            <Button Content="%" Grid.Row="1" Grid.Column="0" FontSize="24" Command="{Binding MathOp}" CommandParameter="%"/>
+
+            <Button Content="CE" Grid.Row="1" Grid.Column="1" FontSize="24" Command="{Binding Edit}" CommandParameter="ce"/>
+            <Button Content="C" Grid.Row="1" Grid.Column="2" FontSize="24" Command="{Binding Edit}" CommandParameter="c"/>
+            <Button Content="⌫" Grid.Row="1" Grid.Column="3" FontSize="24" Command="{Binding Edit}" CommandParameter="back"/>
+
+            <Button Content="√" Grid.Row="2" Grid.Column="0" FontSize="24" Command="{Binding Special}" CommandParameter="sqrt"/>
+            <Button Content="x²" Grid.Row="3" Grid.Column="0" FontSize="24" Command="{Binding Special}" CommandParameter="power2"/>
+            <Button Content="x³" Grid.Row="4" Grid.Column="0" FontSize="24" Command="{Binding Special}" CommandParameter="power3"/>
+            <Button Content="1/x" Grid.Row="5" Grid.Column="0" FontSize="24" Command="{Binding Special}" CommandParameter="inverse"/>
+            <Button Content="±" Grid.Row="5" Grid.Column="1" FontSize="24" Command="{Binding Special}" CommandParameter="+-"/>
+            <Button Content="," Grid.Row="5" Grid.Column="3" FontSize="24" Command="{Binding Special}" CommandParameter=","/>
+        </Grid>
+    </Grid>
+</Window>
